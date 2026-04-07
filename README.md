@@ -13,7 +13,7 @@ It provides full control over the **UHF RFID** radio module and the **Barcode Sc
 Install the library directly from GitHub:
 
 ```bash
-npm install git+https://github.com/rafaax/react-native-urovo-rfid.git
+npm install react-native-urovo-rfid
 ```
 
 ### Mandatory Requirement (Urovo SDK)
