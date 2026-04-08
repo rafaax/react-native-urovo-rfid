@@ -101,4 +101,28 @@ class UrovoRfidNativeModule(reactContext: ReactApplicationContext) : ReactContex
             promise.reject("ERRO", "Exceção ao tentar inicializar: ${e.message}")
         }
     }
+
+    @ReactMethod
+    fun startInventory(promise: Promise) {
+        try {
+            Log.d("UrovoRfidNative", "NATIVO: Recebeu comando do JS para ligar o rádio")
+            val result = RFIDSDKManager.getInstance().rfidManager?.startInventory() ?: -1
+            
+            if (result == 0) {
+                Log.d("UrovoRfidNative", "NATIVO: Rádio ligado! Procurando tags...")
+                promise.resolve(true)
+            } else {
+                Log.e("UrovoRfidNative", "NATIVO: Falha ao ligar rádio. Código: $result")
+                promise.reject("ERRO", "Falha: $result")
+            }
+        } catch (e: Exception) { promise.reject("ERRO", e.message) }
+    }
+
+    @ReactMethod
+    fun stopInventory(promise: Promise) {
+        try {
+            RFIDSDKManager.getInstance().rfidManager?.stopInventory()
+            promise.resolve(true)
+        } catch (e: Exception) { promise.reject("ERRO", e.message) }
+    }
 }
