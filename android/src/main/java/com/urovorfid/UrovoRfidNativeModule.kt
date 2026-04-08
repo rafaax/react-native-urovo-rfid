@@ -56,4 +56,49 @@ class UrovoRfidNativeModule(reactContext: ReactApplicationContext) : ReactContex
             Log.e("UrovoRfidNative", "Erro ao enviar evento para o JS", e)
         }
     }
+
+    private val rfidCallback = object : DataCallback {
+        override fun onInventoryTag(tag: ReadTag?) {
+            tag?.epcId?.let { epc ->
+                Log.d("UrovoRfidNative", "🎯 NATIVO: Tag capturada pela antena: $epc")
+                sendEvent("onRfidRead", epc)
+            }
+        }
+        override fun onInventoryTagEnd() {}
+    }
+
+    @ReactMethod
+    fun initAntenna(promise: Promise) {
+        try {
+            RFIDSDKManager.getInstance().init(reactApplicationContext, object : InitListener {
+                override fun onStatus(status: Boolean) {
+                    if (status) {
+                        Log.d("UrovoRfidNative", "Placa RFID inicializada fisicamente com sucesso!")
+                        
+                        val rfidManager = RFIDSDKManager.getInstance().rfidManager
+                        if (rfidManager != null) {
+                            rfidManager.addDataCallback(rfidCallback)
+                            rfidManager.setBeepEnable(true) 
+                            
+                            GripDeviceManager.getInstance().setKeyEventListener(object : KeyEventListener {
+                                override fun event(keyCode: Int, isDown: Boolean) {
+                                    if (keyCode == BTKeyEvent.BT_SCAN || keyCode == 515 || keyCode == 523) {
+                                        sendEvent("onHardwareTrigger", if (isDown) "true" else "false")
+                                    }
+                                }
+                            })
+
+                            promise.resolve(true)
+                        } else {
+                            promise.reject("ERRO", "Placa ligou, mas o rfidManager continuou nulo.")
+                        }
+                    } else {
+                        promise.reject("ERRO", "Falha ao ligar a placa RFID.")
+                    }
+                }
+            })
+        } catch (e: Exception) {
+            promise.reject("ERRO", "Exceção ao tentar inicializar: ${e.message}")
+        }
+    }
 }
