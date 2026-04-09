@@ -140,4 +140,54 @@ class UrovoRfidNativeModule(reactContext: ReactApplicationContext) : ReactContex
             promise.reject("ERRO", e.message)
         }
     }
+
+    @ReactMethod
+    fun startRadar(epc: String, promise: Promise) {
+        val rfidManager = RFIDSDKManager.getInstance().rfidManager
+        if (rfidManager == null) {
+            promise.reject("ERRO", "RFID Manager está nulo.")
+            return
+        }
+
+        if (radarThread != null) return
+
+        isRadarWorking = true
+        radarThread = Thread {
+            var currentRssi = 0
+            while (isRadarWorking) {
+                val tag: Tag6C? = rfidManager.findEpc(epc)
+                
+                if (tag != null) {
+                    currentRssi = tag.rssi
+                    // Toca o bipe nativo da placa imediatamente
+                    SoundTool.getInstance().playSound(1) 
+                    
+                    // Avisa o React Native a força do sinal para animar a barra
+                    sendEvent("onRadarRssi", currentRssi.toString())
+                } else {
+                    // A gravidade nativa da Urovo
+                    if (currentRssi > 0) currentRssi -= 5
+                    if (currentRssi < 0) currentRssi = 0
+                    
+                    sendEvent("onRadarRssi", currentRssi.toString())
+                }
+                
+                Thread.sleep(40) 
+            }
+        }
+        radarThread?.start()
+        promise.resolve(true)
+    }
+
+    @ReactMethod
+    fun stopRadar(promise: Promise) {
+        isRadarWorking = false
+        try {
+            radarThread?.join()
+            radarThread = null
+            promise.resolve(true)
+        } catch (e: Exception) {
+            promise.reject("ERRO", e.message)
+        }
+    }
 }
