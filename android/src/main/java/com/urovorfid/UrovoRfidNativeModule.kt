@@ -125,4 +125,19 @@ class UrovoRfidNativeModule(reactContext: ReactApplicationContext) : ReactContex
             promise.resolve(true)
         } catch (e: Exception) { promise.reject("ERRO", e.message) }
     }
+
+    @ReactMethod
+    fun setBeep(isEnable: Boolean, promise: Promise) {
+        try {
+            val rfidManager = RFIDSDKManager.getInstance().rfidManager
+            if (rfidManager != null) {
+                rfidManager.setBeepEnable(isEnable)
+                promise.resolve(true)
+            } else {
+                promise.reject("ERRO", "RFID Manager está nulo.")
+            }
+        } catch (e: Exception) {
+            promise.reject("ERRO", e.message)
+        }
+    }
 }
