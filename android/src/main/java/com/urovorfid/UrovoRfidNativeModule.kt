@@ -190,4 +190,23 @@ class UrovoRfidNativeModule(reactContext: ReactApplicationContext) : ReactContex
             promise.reject("ERRO", e.message)
         }
     }
+
+    @ReactMethod
+    fun setPower(powerLevel: Int, promise: Promise) {
+        try {
+            val safePower = powerLevel.coerceIn(0, 30) 
+            val rfidManager = RFIDSDKManager.getInstance().rfidManager 
+            val result = rfidManager?.setOutputPower(safePower) ?: -1
+            
+            if (result == 0) {
+                Log.d("UrovoRfidNative", "NATIVO: Potência calibrada para $safePower dBm com sucesso!")
+                promise.resolve(true)
+            } else {
+                Log.e("UrovoRfidNative", "NATIVO: Erro ao definir potência. Código: $result")
+                promise.reject("ERRO", "Falha ao definir potência. Código: $result")
+            }
+        } catch (e: Exception) {
+            promise.reject("ERRO", e.message)
+        }
+    }
 }
