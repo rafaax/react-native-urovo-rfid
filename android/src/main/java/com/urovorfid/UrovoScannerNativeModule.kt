@@ -54,4 +54,32 @@ class UrovoScannerNativeModule(reactContext: ReactApplicationContext) : ReactCon
             promise.reject("ERRO", e.message)
         }
     }
+
+    @ReactMethod
+    fun setScannerTriggerMode(mode: String, promise: Promise) {
+        try {
+            val scanManager = ScanManager()
+            
+            when (mode) {
+                "HOST" -> {
+                    // Padrão: Segura para ler, solta para desligar
+                    scanManager.setTriggerMode(Triggering.HOST)
+                }
+                "CONTINUOUS" -> {
+                    // Contínuo: Laser sempre aceso (mãos livres)
+                    scanManager.setTriggerMode(Triggering.CONTINUOUS)
+                }
+                "PULSE" -> {
+                    // Pulso: Aperta uma vez e solta, ele fica aceso até ler algo
+                    scanManager.setTriggerMode(Triggering.PULSE)
+                }
+                else -> {
+                    scanManager.setTriggerMode(Triggering.HOST)
+                }
+            }
+            promise.resolve(true)
+        } catch (e: Exception) {
+            promise.reject("ERRO", "Falha ao mudar modo do Scanner: ${e.message}")
+        }
+    }
 }
