@@ -8,7 +8,8 @@ import com.facebook.react.uimanager.ViewManager
 class UrovoRfidPackage : ReactPackage {
   override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
     return listOf(
-      UrovoRfidNativeModule(reactContext)
+      UrovoRfidNativeModule(reactContext),
+      UrovoScannerNativeModule(reactContext)
     )
   }
 
