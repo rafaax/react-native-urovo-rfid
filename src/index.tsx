@@ -16,3 +16,15 @@ export const UrovoRfidNative = NativeModules.UrovoRfidNative
         },
       }
     );
+
+// Exportando o Módulo do Laser Scanner
+export const UrovoScannerNative = NativeModules.UrovoScannerNative
+  ? NativeModules.UrovoScannerNative
+  : new Proxy(
+      {},
+      {
+        get() {
+          throw new Error(LINKING_ERROR);
+        },
+      }
+    );
