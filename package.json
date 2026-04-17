@@ -1,6 +1,6 @@
 {
   "name": "react-native-urovo-rfid",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "DTP50P React Native",
   "main": "src/index",
   "codegenConfig": {
@@ -8,7 +8,7 @@
     "type": "modules",
     "jsSrcsDir": "src"
   },
-  "author": "rafaax <rafavfx1@gmail.com> (https://github.com/rafaax)",
+  "author": "Raphael Meireles <raphael.meireles@ssector7.com> (https://github.com/rafaax)",
   "license": "UNLICENSED",
   "homepage": "https://github.com/rafaax/react-native-urovo-rfid#readme",
   "create-react-native-library": {
@@ -21,5 +21,11 @@
       "release-it"
     ],
     "version": "0.60.0"
+  }, 
+  "keywords": ["react-native", "urovo", "rfid", "dtp50p", "native-module", "turbo-module", "uhf", "scanner", "barcode"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafaax/react-native-urovo-rfid"
   }
+
 }

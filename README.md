@@ -1,4 +1,4 @@
-# 📱 React Native Urovo RFID & Scanner
+# React Native Urovo RFID & Scanner
 
 [![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
 [![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
@@ -8,15 +8,15 @@ It provides full control over the **UHF RFID** radio module and the **Barcode Sc
 
 ---
 
-## 🚀 Installation
+## Installation
 
 Install the library directly from GitHub:
 
 ```bash
-npm install git+https://github.com/rafaax/react-native-urovo-rfid.git
+npm install react-native-urovo-rfid
 ```
 
-### ⚠️ Mandatory Requirement (Urovo SDK)
+### Mandatory Requirement (Urovo SDK)
 Due to copyright issues, Urovo's proprietary drivers are not included in the public repository. You need to provide them:
 
 1. Obtain the files `URFIDLibrary-vX.aar` and `urovo_platform_sdk_vX.jar` from your supplier.
@@ -32,7 +32,7 @@ dependencies {
 
 ---
 
-## 📡 API Reference: UHF RFID
+## API Reference: UHF RFID
 
 Import the RFID module in your code:
 
@@ -54,7 +54,7 @@ import { UrovoRfidNative } from 'react-native-urovo-rfid';
 
 ---
 
-## 🔫 API Reference: Scanner (Laser)
+## API Reference: Scanner (Laser)
 
 Import the Scanner module in your code:
 
@@ -74,7 +74,7 @@ import { UrovoScannerNative } from 'react-native-urovo-rfid';
 
 ---
 
-## 🎧 Listening to Hardware Events
+## Listening to Hardware Events
 
 The library triggers native events in real-time to Javascript. Use React Native's `DeviceEventEmitter` to listen to them:
 
@@ -114,7 +114,7 @@ useEffect(() => {
 
 ---
 
-## 🛠️ Complete Usage Example (Custom Hook)
+## Complete Usage Example (Custom Hook)
 
 For the best experience, we recommend isolating the logic into a Custom Hook. Here is a practical example of implementing **Power Control** with debounce:
 
