@@ -1,8 +1,5 @@
 # React Native Urovo RFID & Scanner
 
-[![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
-[![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
-
 A robust library for native integration with **Urovo** data collectors (DT50, RT40 Series, etc.). 
 It provides full control over the **UHF RFID** radio module and the **Barcode Scanner (Laser)**, allowing for power adjustments, reading modes, and physical trigger interception.
 
