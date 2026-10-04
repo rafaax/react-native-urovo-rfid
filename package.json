@@ -14,12 +14,6 @@
   "create-react-native-library": {
     "type": "turbo-module",
     "languages": "kotlin-objc",
-    "tools": [
-      "eslint",
-      "jest",
-      "lefthook",
-      "release-it"
-    ],
     "version": "0.60.0"
   }, 
   "keywords": ["react-native", "urovo", "rfid", "dt50p", "dt50p-lite", "native-module", "turbo-module", "uhf", "scanner", "barcode"],
