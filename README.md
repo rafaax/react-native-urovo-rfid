@@ -31,6 +31,18 @@ dependencies {
 
 ---
 
+## Compatibility
+
+| react-native-urovo-rfid | React Native | New Architecture | Tested device |
+|---|---|---|---|
+| 1.0.x | 0.84.1 | yes (`newArchEnabled=true`) | DT50P |
+
+- Tested with React Native 0.84.1 (React 19.2.3) with Hermes enabled. Other React Native versions have not been tested.
+- Android only: `minSdk` 24, `compileSdk` and `targetSdk` 36.
+- The DT50P Lite is expected to work, but has not been tested.
+
+---
+
 ## API Reference: UHF RFID
 
 Import the RFID module in your code:
