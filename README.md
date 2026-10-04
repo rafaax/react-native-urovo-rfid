@@ -150,3 +150,9 @@ export const useUrovo = (power = 30) => {
   }, []);
 };
 ```
+
+---
+
+## License
+
+[MIT](LICENSE). The Urovo drivers (`.aar` and `.jar`) are proprietary, are not part of this repository and are not covered by this license.

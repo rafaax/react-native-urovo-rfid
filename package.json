@@ -4,7 +4,7 @@
   "description": "React Native bridge for Urovo DT50P and DT50P Lite handhelds (UHF RFID and barcode scanner)",
   "main": "src/index",
   "author": "Raphael Meireles <raphael.meireles@ssector7.com> (https://github.com/rafaax)",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "homepage": "https://github.com/rafaax/react-native-urovo-rfid#readme",
   "keywords": ["react-native", "urovo", "rfid", "dt50p", "dt50p-lite", "native-module", "uhf", "scanner", "barcode"],
   "repository": {
