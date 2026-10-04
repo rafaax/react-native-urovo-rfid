@@ -153,6 +153,12 @@ export const useUrovo = (power = 30) => {
 
 ---
 
+## Acknowledgments
+
+This library was inspired by [react-native-urovo](https://github.com/iliapnmrv/react-native-urovo) by [@iliapnmrv](https://github.com/iliapnmrv), React Native bindings for Urovo barcode scanners.
+
+---
+
 ## License
 
 [MIT](LICENSE). The Urovo drivers (`.aar` and `.jar`) are proprietary, are not part of this repository and are not covered by this license.
