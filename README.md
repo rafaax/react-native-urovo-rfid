@@ -3,6 +3,8 @@
 A robust library for native integration with **Urovo** data collectors. Developed and tested on the **DT50P**; the **DT50P Lite** shares the same UHF RFID and barcode scanner features and is expected to work, but has not been tested. 
 It provides full control over the **UHF RFID** radio module and the **Barcode Scanner (Laser)**, allowing for power adjustments, reading modes, and physical trigger interception.
 
+**Platform:** Android only. Urovo handhelds run Android, so there is no iOS implementation.
+
 ---
 
 ## Installation
