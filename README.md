@@ -15,6 +15,21 @@ Install the library from [npm](https://www.npmjs.com/package/react-native-urovo-
 npm install react-native-urovo-rfid
 ```
 
+#### Alternative: GitHub Packages
+
+The package is also published to [GitHub Packages](https://github.com/rafaax/react-native-urovo-rfid/pkgs/npm/react-native-urovo-rfid) as `@rafaax/react-native-urovo-rfid`. GitHub's npm registry requires authentication even for public packages, so create a personal access token (classic) with the `read:packages` scope and add this to your project's `.npmrc`:
+
+```
+@rafaax:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
+```
+
+Then install it:
+
+```bash
+npm install @rafaax/react-native-urovo-rfid
+```
+
 ### Mandatory Requirement (Urovo SDK)
 Due to copyright issues, Urovo's proprietary drivers are not included in the public repository. You need to provide them:
 
